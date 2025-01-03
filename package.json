@@ -24,9 +24,11 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
+    "23": "^0.0.0",
     "@ai16z/client-direct": "0.1.6-alpha.4",
     "@ai16z/eliza": "0.1.6-alpha.4",
     "@ai16z/plugin-0g": "0.1.6-alpha.4",
+    "agent-twitter-client": "^0.0.18",
     "dotenv": "^16.4.7"
   },
   "devDependencies": {

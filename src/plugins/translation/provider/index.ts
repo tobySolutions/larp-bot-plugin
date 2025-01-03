@@ -1,5 +1,5 @@
-import { Provider, IAgentRuntime, Memory, State } from '@ai16z/eliza';
-import { TranslationData, TranslationProviderResponse } from '../types';
+import { Provider, IAgentRuntime, Memory, State } from "@ai16z/eliza";
+import { TranslationData, TranslationProviderResponse } from "../types.ts";
 
 // Simple in-memory cache
 const translationCache = new Map<string, TranslationData>();
@@ -18,12 +18,16 @@ export const cacheTranslation = (data: TranslationData): void => {
       }
     }
   } catch (error) {
-    console.error('Failed to cache translation:', error);
+    console.error("Failed to cache translation:", error);
   }
 };
 
 export const translationProvider: Provider = {
-  get: async (runtime: IAgentRuntime, message: Memory, state?: State): Promise<TranslationProviderResponse> => {
+  get: async (
+    runtime: IAgentRuntime,
+    message: Memory,
+    state?: State
+  ): Promise<TranslationProviderResponse> => {
     try {
       const content = message.content as { text: string };
       const match = content.text.match(/translate\s+"([^"]+)"\s+to\s+(\w+)/i);
@@ -31,7 +35,7 @@ export const translationProvider: Provider = {
       if (!match) {
         return {
           success: false,
-          error: 'Invalid translation request format'
+          error: "Invalid translation request format",
         };
       }
 
@@ -42,19 +46,22 @@ export const translationProvider: Provider = {
       if (cachedData) {
         return {
           success: true,
-          data: cachedData
+          data: cachedData,
         };
       }
 
       return {
         success: false,
-        error: 'Translation not found in cache'
+        error: "Translation not found in cache",
       };
     } catch (error) {
       return {
         success: false,
-        error: error instanceof Error ? error.message : 'Failed to retrieve translation'
+        error:
+          error instanceof Error
+            ? error.message
+            : "Failed to retrieve translation",
       };
     }
-  }
+  },
 };
