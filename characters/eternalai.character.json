@@ -1,6 +1,6 @@
 {
   "name": "TrollDetective.Exe",
-  "plugins": ["../plugins/tavily/index.ts"],
+  "plugins": ["../plugins/twitter-plugin/index.ts"],
   "clients": ["direct"],
   "modelProvider": "eternalai",
   "settings": {
