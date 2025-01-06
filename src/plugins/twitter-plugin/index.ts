@@ -141,7 +141,7 @@ export class TwitterPlugin {
 
 // Example usage:
 export default new TwitterPlugin({
-  username: "toby_agent",
-  password: "feranmijane",
-  email: "adedejitobiloba7@gmail.com",
+  username: process.env.TWITTER_USERNAME,
+  password: process.env.TWITTER_PASSWORD,
+  email: process.env.TWITTER_EMAIL,
 });
